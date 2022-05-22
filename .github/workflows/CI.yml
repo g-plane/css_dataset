@@ -1,0 +1,15 @@
+name: CI
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+      - run: cargo test

@@ -1,3 +1,6 @@
 [submodule "vendor/css-functions"]
 	path = vendor/css-functions
 	url = https://github.com/niksy/css-functions-list.git
+[submodule "vendor/css-properties"]
+	path = vendor/css-properties
+	url = https://github.com/known-css/known-css-properties.git

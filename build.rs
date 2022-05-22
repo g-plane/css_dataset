@@ -1,14 +1,13 @@
-use anyhow::{Ok, Result};
 use serde::Deserialize;
-use std::{env, fs};
+use std::{env, error::Error, fs};
 
-fn main() -> Result<()> {
+fn main() -> Result<(), Box<dyn Error>> {
     generate_properties()?;
 
     Ok(())
 }
 
-fn generate_properties() -> Result<()> {
+fn generate_properties() -> Result<(), Box<dyn Error>> {
     println!("cargo:rerun-if-changed=vendor/css-properties/data/all.json");
 
     #[derive(Deserialize)]

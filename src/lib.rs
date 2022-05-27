@@ -5,6 +5,7 @@
 //! This crate should be used for CSS tooling, not normal users.
 
 mod at_rule;
+pub mod pseudo_classes;
 
 use ahash::AHashSet;
 pub use at_rule::AT_RULES;

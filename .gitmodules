@@ -4,3 +4,6 @@
 [submodule "vendor/css-properties"]
 	path = vendor/css-properties
 	url = https://github.com/known-css/known-css-properties.git
+[submodule "vendor/svg-tags"]
+	path = vendor/svg-tags
+	url = https://github.com/element-io/svg-tags.git

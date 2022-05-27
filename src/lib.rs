@@ -6,6 +6,7 @@
 
 mod at_rule;
 pub mod pseudo_classes;
+pub mod pseudo_elements;
 
 use ahash::AHashSet;
 pub use at_rule::AT_RULES;

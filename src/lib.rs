@@ -1,3 +1,9 @@
+#![warn(missing_docs)]
+
+//! This crate contains CSS reference data set, such as known functions and properties.
+//!
+//! This crate should be used for CSS tooling, not normal users.
+
 mod at_rule;
 
 use ahash::AHashSet;

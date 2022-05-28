@@ -5,6 +5,7 @@
 //! This crate should be used for CSS tooling, not normal users.
 
 mod at_rule;
+pub mod autoprefixable;
 pub mod media;
 pub mod pseudo_classes;
 pub mod pseudo_elements;

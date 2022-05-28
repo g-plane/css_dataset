@@ -11,7 +11,7 @@ pub mod pseudo_classes;
 pub mod pseudo_elements;
 pub mod tags;
 
-use ahash::AHashSet;
+use ahash::{AHashMap, AHashSet};
 pub use at_rule::AT_RULES;
 use once_cell::sync::Lazy;
 
@@ -26,6 +26,15 @@ pub static PROPERTIES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
     let json = include_str!(concat!(env!("OUT_DIR"), "/css-properties.json"));
     serde_json::from_str(json).unwrap()
 });
+
+/// Data of properties shorthand.
+///
+/// Copied from <https://github.com/stylelint/stylelint/blob/main/lib/reference/shorthandData.js>.
+pub static PROPERTIES_SHORTHAND: Lazy<AHashMap<&'static str, Vec<&'static str>>> =
+    Lazy::new(|| {
+        let json = include_str!("../vendor/properties-shorthand.json");
+        serde_json::from_str(json).unwrap()
+    });
 
 #[cfg(test)]
 mod tests {
@@ -43,5 +52,13 @@ mod tests {
         assert!(PROPERTIES.contains("padding"));
         assert!(PROPERTIES.contains("animation"));
         assert!(PROPERTIES.contains("accent-color"));
+    }
+
+    #[test]
+    fn test_properties_shorthand() {
+        assert_eq!(
+            PROPERTIES_SHORTHAND.get("margin").unwrap(),
+            &["margin-top", "margin-bottom", "margin-left", "margin-right"]
+        );
     }
 }

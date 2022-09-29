@@ -28,6 +28,7 @@ pub static LEVEL_THREE_AND_UP_PSEUDO_ELEMENTS: Lazy<AHashSet<&'static str>> = La
     set.insert("cue");
     set.insert("file-selector-button");
     set.insert("grammar-error");
+    set.insert("highlight");
     set.insert("marker");
     set.insert("placeholder");
     set.insert("selection");

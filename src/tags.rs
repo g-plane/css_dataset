@@ -7,7 +7,7 @@ use once_cell::sync::Lazy;
 
 /// Standard HTML tags.
 pub static STANDARD_HTML_TAGS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(117);
     set.insert("a");
     set.insert("abbr");
     set.insert("address");
@@ -130,7 +130,7 @@ pub static STANDARD_HTML_TAGS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
 
 /// Non-standard HTML tags.
 pub static NON_STANDARD_HTML_TAGS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(23);
     set.insert("acronym");
     set.insert("applet");
     set.insert("basefont");
@@ -169,7 +169,7 @@ pub static SVG_TAGS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
 ///
 /// Copied from <https://github.com/wooorm/mathml-tag-names>.
 pub static MATH_ML_TAGS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(189);
     set.insert("abs");
     set.insert("and");
     set.insert("annotation");

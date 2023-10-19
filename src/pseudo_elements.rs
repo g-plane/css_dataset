@@ -7,7 +7,7 @@ use once_cell::sync::Lazy;
 
 /// Level one and two pseudo elements.
 pub static LEVEL_ONE_AND_TWO_PSEUDO_ELEMENTS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(4);
     set.insert("before");
     set.insert("after");
     set.insert("first-line");
@@ -17,7 +17,7 @@ pub static LEVEL_ONE_AND_TWO_PSEUDO_ELEMENTS: Lazy<AHashSet<&'static str>> = Laz
 
 /// Level three and up pseudo elements.
 pub static LEVEL_THREE_AND_UP_PSEUDO_ELEMENTS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(17);
     set.insert("before");
     set.insert("after");
     set.insert("first-line");
@@ -41,14 +41,14 @@ pub static LEVEL_THREE_AND_UP_PSEUDO_ELEMENTS: Lazy<AHashSet<&'static str>> = La
 
 /// Shadow tree pseudo elements.
 pub static SHADOW_TREE_PSEUDO_ELEMENTS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(1);
     set.insert("part");
     set
 });
 
 /// WebKit scrollbar pseudo elements.
 pub static WEBKIT_SCROLLBAR_PSEUDO_ELEMENTS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(7);
     set.insert("-webkit-resizer");
     set.insert("-webkit-scrollbar");
     set.insert("-webkit-scrollbar-button");
@@ -61,7 +61,7 @@ pub static WEBKIT_SCROLLBAR_PSEUDO_ELEMENTS: Lazy<AHashSet<&'static str>> = Lazy
 
 /// Pseudo elements which are vendor-specific and with vendor prefix.
 pub static VENDOR_SPECIFIC_PSEUDO_ELEMENTS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(66);
     set.insert("-moz-focus-inner");
     set.insert("-moz-focus-outer");
     set.insert("-moz-list-bullet");

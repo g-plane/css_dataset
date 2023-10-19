@@ -3,7 +3,7 @@ use once_cell::sync::Lazy;
 
 /// Known CSS at-rule names.
 pub static AT_RULES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(40);
     set.insert("annotation");
     set.insert("apply");
     set.insert("character-variant");

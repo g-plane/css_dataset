@@ -8,7 +8,7 @@ use once_cell::sync::Lazy;
 // https://github.com/stylelint/stylelint/blob/e6d6740c581c7289d18337f0fb78a776bf5f654c/lib/reference/keywordSets.js#L660
 // https://github.com/stylelint/stylelint/blob/e6d6740c581c7289d18337f0fb78a776bf5f654c/lib/reference/keywordSets.js#L673
 pub static MEDIA_FEATURE_NAMES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(52);
 
     set.insert("any-hover");
     set.insert("any-pointer");

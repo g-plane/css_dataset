@@ -7,7 +7,7 @@ use once_cell::sync::Lazy;
 
 /// `<an+b>` notation pseudo classes.
 pub static AN_PLUS_B_NOTATION_PSEUDO_CLASSES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(4);
     set.insert("nth-column");
     set.insert("nth-last-column");
     set.insert("nth-last-of-type");
@@ -17,7 +17,7 @@ pub static AN_PLUS_B_NOTATION_PSEUDO_CLASSES: Lazy<AHashSet<&'static str>> = Laz
 
 /// Linguistic pseudo classes.
 pub static LINGUISTIC_PSEUDO_CLASSES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(2);
     set.insert("dir");
     set.insert("lang");
     set
@@ -25,7 +25,7 @@ pub static LINGUISTIC_PSEUDO_CLASSES: Lazy<AHashSet<&'static str>> = Lazy::new(|
 
 /// Logical combinations pseudo classes.
 pub static LOGICAL_COMBINATIONS_PSEUDO_CLASSES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(5);
     set.insert("has");
     set.insert("is");
     set.insert("matches");
@@ -36,7 +36,7 @@ pub static LOGICAL_COMBINATIONS_PSEUDO_CLASSES: Lazy<AHashSet<&'static str>> = L
 
 /// `<an+b>` of s notation pseudo classes.
 pub static AN_PLUS_B_OF_S_NOTATION_PSEUDO_CLASSES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(2);
     set.insert("nth-child");
     set.insert("nth-last-child");
     set
@@ -44,7 +44,7 @@ pub static AN_PLUS_B_OF_S_NOTATION_PSEUDO_CLASSES: Lazy<AHashSet<&'static str>> 
 
 /// Uncategorized pseudo classes.
 pub static OTHER_PSEUDO_CLASSES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(50);
     set.insert("active");
     set.insert("any-link");
     set.insert("autofill");
@@ -100,7 +100,7 @@ pub static OTHER_PSEUDO_CLASSES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
 
 /// Pseudo classes which are vendor-specific and with vendor prefix.
 pub static VENDOR_SPECIFIC_PSEUDO_CLASSES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(29);
     set.insert("-khtml-drag");
     set.insert("-moz-any");
     set.insert("-moz-any-link");
@@ -135,7 +135,7 @@ pub static VENDOR_SPECIFIC_PSEUDO_CLASSES: Lazy<AHashSet<&'static str>> = Lazy::
 
 /// WebKit scrollbar pseudo classes.
 pub static WEBKIT_SCROLLBAR_PSEUDO_CLASSES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let mut set = AHashSet::new();
+    let mut set = AHashSet::with_capacity(11);
     set.insert("horizontal");
     set.insert("vertical");
     set.insert("decrement");

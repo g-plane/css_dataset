@@ -160,10 +160,8 @@ pub static NON_STANDARD_HTML_TAGS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
 /// Known SVG tags.
 ///
 /// Exported from <https://github.com/element-io/svg-tags>.
-pub static SVG_TAGS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let json = include_str!("../vendor/svg-tags/lib/svg-tags.json");
-    serde_json::from_str(json).unwrap()
-});
+pub static SVG_TAGS: Lazy<AHashSet<&'static str>> =
+    Lazy::new(|| include!(concat!(env!("OUT_DIR"), "/svg_tags.rs")));
 
 /// Known MathML tags.
 ///

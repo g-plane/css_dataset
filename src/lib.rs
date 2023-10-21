@@ -16,25 +16,18 @@ pub use at_rule::AT_RULES;
 use once_cell::sync::Lazy;
 
 /// Known CSS functions.
-pub static FUNCTIONS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let json = include_str!("../vendor/css-functions/index.json");
-    serde_json::from_str(json).unwrap()
-});
+pub static FUNCTIONS: Lazy<AHashSet<&'static str>> =
+    Lazy::new(|| include!(concat!(env!("OUT_DIR"), "/css_functions.rs")));
 
 /// Known CSS properties.
-pub static PROPERTIES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
-    let json = include_str!(concat!(env!("OUT_DIR"), "/css-properties.json"));
-    serde_json::from_str(json).unwrap()
-});
+pub static PROPERTIES: Lazy<AHashSet<&'static str>> =
+    Lazy::new(|| include!(concat!(env!("OUT_DIR"), "/css_properties.rs")));
 
 /// Data of properties shorthand.
 ///
 /// Copied from <https://github.com/stylelint/stylelint/blob/main/lib/reference/shorthandData.js>.
 pub static PROPERTIES_SHORTHAND: Lazy<AHashMap<&'static str, Vec<&'static str>>> =
-    Lazy::new(|| {
-        let json = include_str!("../vendor/properties-shorthand.json");
-        serde_json::from_str(json).unwrap()
-    });
+    Lazy::new(|| include!(concat!(env!("OUT_DIR"), "/css_properties_shorthand.rs")));
 
 #[cfg(test)]
 mod tests {

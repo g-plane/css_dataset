@@ -92,6 +92,7 @@ pub static STANDARD_HTML_TAGS: phf::Set<&'static str> = phf::phf_set! {
     "s",
     "samp",
     "script",
+    "search",
     "section",
     "select",
     "slot",

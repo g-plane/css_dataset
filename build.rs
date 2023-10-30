@@ -23,19 +23,14 @@ fn generate_properties() -> Result<(), Box<dyn Error>> {
         env::var("CARGO_MANIFEST_DIR")?
     ))?)?;
 
+    let mut set = phf_codegen::Set::new();
+    data.properties.into_iter().for_each(|property| {
+        set.entry(property);
+    });
+
     fs::write(
         format!("{}/css_properties.rs", env::var("OUT_DIR")?),
-        iter::once(format!(
-            "{{\nlet mut set = ahash::AHashSet::with_capacity({});\n",
-            data.properties.len()
-        ))
-        .chain(
-            data.properties
-                .into_iter()
-                .map(|property| format!("set.insert(\"{property}\");\n")),
-        )
-        .chain(iter::once("set\n}".to_string()))
-        .collect::<String>(),
+        set.build().to_string(),
     )?;
 
     Ok(())
@@ -83,18 +78,13 @@ fn generate_functions() -> Result<(), Box<dyn Error>> {
         env::var("CARGO_MANIFEST_DIR")?
     ))?)?;
 
+    let mut set = phf_codegen::Set::new();
+    data.into_iter().for_each(|function| {
+        set.entry(function);
+    });
     fs::write(
         format!("{}/css_functions.rs", env::var("OUT_DIR")?),
-        iter::once(format!(
-            "{{\nlet mut set = ahash::AHashSet::with_capacity({});\n",
-            data.len()
-        ))
-        .chain(
-            data.into_iter()
-                .map(|function| format!("set.insert(\"{function}\");\n")),
-        )
-        .chain(iter::once("set\n}".to_string()))
-        .collect::<String>(),
+        set.build().to_string(),
     )?;
 
     Ok(())
@@ -108,18 +98,14 @@ fn generate_svg_tags() -> Result<(), Box<dyn Error>> {
         env::var("CARGO_MANIFEST_DIR")?
     ))?)?;
 
+    let mut set = phf_codegen::Set::new();
+    data.into_iter().for_each(|tag| {
+        set.entry(tag);
+    });
+
     fs::write(
         format!("{}/svg_tags.rs", env::var("OUT_DIR")?),
-        iter::once(format!(
-            "{{\nlet mut set = ahash::AHashSet::with_capacity({});\n",
-            data.len()
-        ))
-        .chain(
-            data.into_iter()
-                .map(|tag| format!("set.insert(\"{tag}\");\n")),
-        )
-        .chain(iter::once("set\n}".to_string()))
-        .collect::<String>(),
+        set.build().to_string(),
     )?;
 
     Ok(())

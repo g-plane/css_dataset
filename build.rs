@@ -4,7 +4,6 @@ use std::{collections::HashMap, env, error::Error, fs, iter};
 fn main() -> Result<(), Box<dyn Error>> {
     generate_properties()?;
     generate_properties_shorthand()?;
-    generate_functions()?;
 
     Ok(())
 }
@@ -66,25 +65,6 @@ fn generate_properties_shorthand() -> Result<(), Box<dyn Error>> {
         }))
         .chain(iter::once("map\n}".to_string()))
         .collect::<String>(),
-    )?;
-
-    Ok(())
-}
-
-fn generate_functions() -> Result<(), Box<dyn Error>> {
-    println!("cargo:rerun-if-changed=vendor/css-functions/index.json");
-
-    let data = serde_json::from_str::<Vec<String>>(&fs::read_to_string(format!(
-        "{}/vendor/css-functions/index.json",
-        env::var("CARGO_MANIFEST_DIR")?
-    ))?)?;
-
-    fs::write(
-        format!("{}/css_functions.rs", env::var("OUT_DIR")?),
-        iter::once("[".to_string())
-            .chain(data.into_iter().map(|function| format!("\"{function}\",")))
-            .chain(iter::once("]".to_string()))
-            .collect::<String>(),
     )?;
 
     Ok(())

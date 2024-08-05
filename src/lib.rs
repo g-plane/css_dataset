@@ -15,7 +15,10 @@ pub use at_rule::AT_RULES;
 use std::{collections::HashMap, sync::LazyLock};
 
 /// Known CSS functions.
-pub static FUNCTIONS: [&str; 645] = include!(concat!(env!("OUT_DIR"), "/css_functions.rs"));
+pub static FUNCTIONS: [&str; 645] = include!(concat!(
+    env!("CARGO_MANIFEST_DIR"),
+    "/vendor/css-functions/index.json"
+));
 
 /// Known CSS properties.
 pub static PROPERTIES: [&str; 1225] = include!(concat!(env!("OUT_DIR"), "/css_properties.rs"));

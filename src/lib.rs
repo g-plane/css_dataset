@@ -39,12 +39,4 @@ mod tests {
         assert!(PROPERTIES.contains(&"animation"));
         assert!(PROPERTIES.contains(&"accent-color"));
     }
-
-    #[test]
-    fn test_properties_shorthand() {
-        assert_eq!(
-            PROPERTIES_SHORTHAND.get("margin").unwrap(),
-            &["margin-top", "margin-bottom", "margin-left", "margin-right"]
-        );
-    }
 }

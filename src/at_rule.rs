@@ -1,8 +1,8 @@
 use ahash::AHashSet;
-use once_cell::sync::Lazy;
+use std::sync::LazyLock;
 
 /// Known CSS at-rule names.
-pub static AT_RULES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
+pub static AT_RULES: LazyLock<AHashSet<&'static str>> = LazyLock::new(|| {
     let mut set = AHashSet::with_capacity(40);
     set.insert("annotation");
     set.insert("apply");

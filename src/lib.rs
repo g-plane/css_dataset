@@ -13,21 +13,21 @@ pub mod tags;
 
 use ahash::{AHashMap, AHashSet};
 pub use at_rule::AT_RULES;
-use once_cell::sync::Lazy;
+use std::sync::LazyLock;
 
 /// Known CSS functions.
-pub static FUNCTIONS: Lazy<AHashSet<&'static str>> =
-    Lazy::new(|| include!(concat!(env!("OUT_DIR"), "/css_functions.rs")));
+pub static FUNCTIONS: LazyLock<AHashSet<&'static str>> =
+    LazyLock::new(|| include!(concat!(env!("OUT_DIR"), "/css_functions.rs")));
 
 /// Known CSS properties.
-pub static PROPERTIES: Lazy<AHashSet<&'static str>> =
-    Lazy::new(|| include!(concat!(env!("OUT_DIR"), "/css_properties.rs")));
+pub static PROPERTIES: LazyLock<AHashSet<&'static str>> =
+    LazyLock::new(|| include!(concat!(env!("OUT_DIR"), "/css_properties.rs")));
 
 /// Data of properties shorthand.
 ///
 /// Copied from <https://github.com/stylelint/stylelint/blob/main/lib/reference/shorthandData.js>.
-pub static PROPERTIES_SHORTHAND: Lazy<AHashMap<&'static str, Vec<&'static str>>> =
-    Lazy::new(|| include!(concat!(env!("OUT_DIR"), "/css_properties_shorthand.rs")));
+pub static PROPERTIES_SHORTHAND: LazyLock<AHashMap<&'static str, Vec<&'static str>>> =
+    LazyLock::new(|| include!(concat!(env!("OUT_DIR"), "/css_properties_shorthand.rs")));
 
 #[cfg(test)]
 mod tests {

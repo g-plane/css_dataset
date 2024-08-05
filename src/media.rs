@@ -1,13 +1,13 @@
 //! Data of media query, such as media feature names.
 
 use ahash::AHashSet;
-use once_cell::sync::Lazy;
+use std::sync::LazyLock;
 
 /// Known media feature names.
 // Copied from:
 // https://github.com/stylelint/stylelint/blob/e6d6740c581c7289d18337f0fb78a776bf5f654c/lib/reference/keywordSets.js#L660
 // https://github.com/stylelint/stylelint/blob/e6d6740c581c7289d18337f0fb78a776bf5f654c/lib/reference/keywordSets.js#L673
-pub static MEDIA_FEATURE_NAMES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
+pub static MEDIA_FEATURE_NAMES: LazyLock<AHashSet<&'static str>> = LazyLock::new(|| {
     let mut set = AHashSet::with_capacity(52);
 
     set.insert("any-hover");

@@ -4,10 +4,10 @@
 //! Copied from [Stylelint](https://github.com/stylelint/stylelint/blob/main/lib/utils/isAutoprefixable.js).
 
 use ahash::AHashSet;
-use once_cell::sync::Lazy;
+use std::sync::LazyLock;
 
 /// Autoprefixable properties.
-pub static PROPERTIES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
+pub static PROPERTIES: LazyLock<AHashSet<&'static str>> = LazyLock::new(|| {
     let mut set = AHashSet::with_capacity(142);
 
     set.insert("align-content");
@@ -159,7 +159,7 @@ pub static PROPERTIES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
 });
 
 /// Autoprefixable pseudo classes. All items are starting with vendor prefix.
-pub static PSEUDO_CLASSES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
+pub static PSEUDO_CLASSES: LazyLock<AHashSet<&'static str>> = LazyLock::new(|| {
     let mut set = AHashSet::with_capacity(10);
 
     set.insert(":-moz-any-link");
@@ -177,7 +177,7 @@ pub static PSEUDO_CLASSES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
 });
 
 /// Autoprefixable pseudo elements. All items are starting with vendor prefix.
-pub static PSEUDO_ELEMENTS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
+pub static PSEUDO_ELEMENTS: LazyLock<AHashSet<&'static str>> = LazyLock::new(|| {
     let mut set = AHashSet::with_capacity(5);
 
     set.insert("::-moz-placeholder");
@@ -190,7 +190,7 @@ pub static PSEUDO_ELEMENTS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
 });
 
 /// Autoprefixable at-rules. All items are starting with `@` and vendor prefix, except `@resolution`.
-pub static AT_RULES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
+pub static AT_RULES: LazyLock<AHashSet<&'static str>> = LazyLock::new(|| {
     let mut set = AHashSet::with_capacity(8);
 
     set.insert("@-khtml-keyframes");
@@ -206,7 +206,7 @@ pub static AT_RULES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
 });
 
 /// Autoprefixable property values. All items are starting with vendor prefix.
-pub static PROPERTY_VALUES: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
+pub static PROPERTY_VALUES: LazyLock<AHashSet<&'static str>> = LazyLock::new(|| {
     let mut set = AHashSet::with_capacity(56);
 
     set.insert("-moz-available");

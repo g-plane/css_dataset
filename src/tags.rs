@@ -3,10 +3,10 @@
 //! Though tags aren't directly related to CSS, but may be useful.
 
 use ahash::AHashSet;
-use once_cell::sync::Lazy;
+use std::sync::LazyLock;
 
 /// Standard HTML tags.
-pub static STANDARD_HTML_TAGS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
+pub static STANDARD_HTML_TAGS: LazyLock<AHashSet<&'static str>> = LazyLock::new(|| {
     let mut set = AHashSet::with_capacity(117);
     set.insert("a");
     set.insert("abbr");
@@ -130,7 +130,7 @@ pub static STANDARD_HTML_TAGS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
 });
 
 /// Non-standard HTML tags.
-pub static NON_STANDARD_HTML_TAGS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
+pub static NON_STANDARD_HTML_TAGS: LazyLock<AHashSet<&'static str>> = LazyLock::new(|| {
     let mut set = AHashSet::with_capacity(23);
     set.insert("acronym");
     set.insert("applet");
@@ -161,13 +161,13 @@ pub static NON_STANDARD_HTML_TAGS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
 /// Known SVG tags.
 ///
 /// Exported from <https://github.com/element-io/svg-tags>.
-pub static SVG_TAGS: Lazy<AHashSet<&'static str>> =
-    Lazy::new(|| include!(concat!(env!("OUT_DIR"), "/svg_tags.rs")));
+pub static SVG_TAGS: LazyLock<AHashSet<&'static str>> =
+    LazyLock::new(|| include!(concat!(env!("OUT_DIR"), "/svg_tags.rs")));
 
 /// Known MathML tags.
 ///
 /// Copied from <https://github.com/wooorm/mathml-tag-names>.
-pub static MATH_ML_TAGS: Lazy<AHashSet<&'static str>> = Lazy::new(|| {
+pub static MATH_ML_TAGS: LazyLock<AHashSet<&'static str>> = LazyLock::new(|| {
     let mut set = AHashSet::with_capacity(189);
     set.insert("abs");
     set.insert("and");

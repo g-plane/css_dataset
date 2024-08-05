@@ -11,17 +11,15 @@ pub mod pseudo_classes;
 pub mod pseudo_elements;
 pub mod tags;
 
-use ahash::{AHashMap, AHashSet};
+use ahash::AHashMap;
 pub use at_rule::AT_RULES;
 use std::sync::LazyLock;
 
 /// Known CSS functions.
-pub static FUNCTIONS: LazyLock<AHashSet<&'static str>> =
-    LazyLock::new(|| include!(concat!(env!("OUT_DIR"), "/css_functions.rs")));
+pub static FUNCTIONS: [&str; 645] = include!(concat!(env!("OUT_DIR"), "/css_functions.rs"));
 
 /// Known CSS properties.
-pub static PROPERTIES: LazyLock<AHashSet<&'static str>> =
-    LazyLock::new(|| include!(concat!(env!("OUT_DIR"), "/css_properties.rs")));
+pub static PROPERTIES: [&str; 1225] = include!(concat!(env!("OUT_DIR"), "/css_properties.rs"));
 
 /// Data of properties shorthand.
 ///
@@ -35,16 +33,16 @@ mod tests {
 
     #[test]
     fn test_functions() {
-        assert!(FUNCTIONS.contains("var"));
-        assert!(FUNCTIONS.contains("env"));
-        assert!(FUNCTIONS.contains("linear-gradient"));
+        assert!(FUNCTIONS.contains(&"var"));
+        assert!(FUNCTIONS.contains(&"env"));
+        assert!(FUNCTIONS.contains(&"linear-gradient"));
     }
 
     #[test]
     fn test_properties() {
-        assert!(PROPERTIES.contains("padding"));
-        assert!(PROPERTIES.contains("animation"));
-        assert!(PROPERTIES.contains("accent-color"));
+        assert!(PROPERTIES.contains(&"padding"));
+        assert!(PROPERTIES.contains(&"animation"));
+        assert!(PROPERTIES.contains(&"accent-color"));
     }
 
     #[test]

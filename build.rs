@@ -25,17 +25,14 @@ fn generate_properties() -> Result<(), Box<dyn Error>> {
 
     fs::write(
         format!("{}/css_properties.rs", env::var("OUT_DIR")?),
-        iter::once(format!(
-            "{{\nlet mut set = ahash::AHashSet::with_capacity({});\n",
-            data.properties.len()
-        ))
-        .chain(
-            data.properties
-                .into_iter()
-                .map(|property| format!("set.insert(\"{property}\");\n")),
-        )
-        .chain(iter::once("set\n}".to_string()))
-        .collect::<String>(),
+        iter::once("[".to_string())
+            .chain(
+                data.properties
+                    .into_iter()
+                    .map(|property| format!("\"{property}\",")),
+            )
+            .chain(iter::once("]".to_string()))
+            .collect::<String>(),
     )?;
 
     Ok(())
@@ -85,16 +82,10 @@ fn generate_functions() -> Result<(), Box<dyn Error>> {
 
     fs::write(
         format!("{}/css_functions.rs", env::var("OUT_DIR")?),
-        iter::once(format!(
-            "{{\nlet mut set = ahash::AHashSet::with_capacity({});\n",
-            data.len()
-        ))
-        .chain(
-            data.into_iter()
-                .map(|function| format!("set.insert(\"{function}\");\n")),
-        )
-        .chain(iter::once("set\n}".to_string()))
-        .collect::<String>(),
+        iter::once("[".to_string())
+            .chain(data.into_iter().map(|function| format!("\"{function}\",")))
+            .chain(iter::once("]".to_string()))
+            .collect::<String>(),
     )?;
 
     Ok(())
@@ -110,16 +101,10 @@ fn generate_svg_tags() -> Result<(), Box<dyn Error>> {
 
     fs::write(
         format!("{}/svg_tags.rs", env::var("OUT_DIR")?),
-        iter::once(format!(
-            "{{\nlet mut set = ahash::AHashSet::with_capacity({});\n",
-            data.len()
-        ))
-        .chain(
-            data.into_iter()
-                .map(|tag| format!("set.insert(\"{tag}\");\n")),
-        )
-        .chain(iter::once("set\n}".to_string()))
-        .collect::<String>(),
+        iter::once("[".to_string())
+            .chain(data.into_iter().map(|tag| format!("\"{tag}\",")))
+            .chain(iter::once("]".to_string()))
+            .collect::<String>(),
     )?;
 
     Ok(())

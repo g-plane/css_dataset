@@ -5,7 +5,6 @@ fn main() -> Result<(), Box<dyn Error>> {
     generate_properties()?;
     generate_properties_shorthand()?;
     generate_functions()?;
-    generate_svg_tags()?;
 
     Ok(())
 }
@@ -84,25 +83,6 @@ fn generate_functions() -> Result<(), Box<dyn Error>> {
         format!("{}/css_functions.rs", env::var("OUT_DIR")?),
         iter::once("[".to_string())
             .chain(data.into_iter().map(|function| format!("\"{function}\",")))
-            .chain(iter::once("]".to_string()))
-            .collect::<String>(),
-    )?;
-
-    Ok(())
-}
-
-fn generate_svg_tags() -> Result<(), Box<dyn Error>> {
-    println!("cargo:rerun-if-changed=vendor/svg-tags/lib/svg-tags.json");
-
-    let data = serde_json::from_str::<Vec<String>>(&fs::read_to_string(format!(
-        "{}/vendor/svg-tags/lib/svg-tags.json",
-        env::var("CARGO_MANIFEST_DIR")?
-    ))?)?;
-
-    fs::write(
-        format!("{}/svg_tags.rs", env::var("OUT_DIR")?),
-        iter::once("[".to_string())
-            .chain(data.into_iter().map(|tag| format!("\"{tag}\",")))
             .chain(iter::once("]".to_string()))
             .collect::<String>(),
     )?;

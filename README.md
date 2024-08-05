@@ -12,7 +12,6 @@ Please read [documentation](https://docs.rs/css_dataset/).
 -   CSS properties list is ported from [known-css/known-css-properties](https://github.com/known-css/known-css-properties).
 -   CSS at-rule names list, pseudo classes list, pseudo elements list, HTML tags and media query data are ported from [Stylelint](https://github.com/stylelint/stylelint/blob/main/lib/reference/keywordSets.js).
 -   Autoprefixable data is ported from [Stylelint](https://github.com/stylelint/stylelint/blob/main/lib/utils/isAutoprefixable.js).
--   Properties shorthand data is ported from [Stylelint](https://github.com/stylelint/stylelint/blob/main/lib/reference/shorthandData.js).
 -   SVG tags list is ported from [element-io/svg-tags](https://github.com/element-io/svg-tags).
 -   MathML tags list is ported from [wooorm/mathml-tag-names](https://github.com/wooorm/mathml-tag-names).
 

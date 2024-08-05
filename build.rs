@@ -50,7 +50,7 @@ fn generate_properties_shorthand() -> Result<(), Box<dyn Error>> {
     fs::write(
         format!("{}/css_properties_shorthand.rs", env::var("OUT_DIR")?),
         iter::once(format!(
-            "{{\nlet mut map = ahash::AHashMap::with_capacity({});\n",
+            "{{\nlet mut map = std::collections::HashMap::with_capacity({});\n",
             data.len()
         ))
         .chain(data.into_iter().flat_map(|(key, value)| {

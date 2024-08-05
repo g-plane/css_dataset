@@ -11,9 +11,8 @@ pub mod pseudo_classes;
 pub mod pseudo_elements;
 pub mod tags;
 
-use ahash::AHashMap;
 pub use at_rule::AT_RULES;
-use std::sync::LazyLock;
+use std::{collections::HashMap, sync::LazyLock};
 
 /// Known CSS functions.
 pub static FUNCTIONS: [&str; 645] = include!(concat!(env!("OUT_DIR"), "/css_functions.rs"));
@@ -24,7 +23,7 @@ pub static PROPERTIES: [&str; 1225] = include!(concat!(env!("OUT_DIR"), "/css_pr
 /// Data of properties shorthand.
 ///
 /// Copied from <https://github.com/stylelint/stylelint/blob/main/lib/reference/shorthandData.js>.
-pub static PROPERTIES_SHORTHAND: LazyLock<AHashMap<&'static str, Vec<&'static str>>> =
+pub static PROPERTIES_SHORTHAND: LazyLock<HashMap<&'static str, Vec<&'static str>>> =
     LazyLock::new(|| include!(concat!(env!("OUT_DIR"), "/css_properties_shorthand.rs")));
 
 #[cfg(test)]

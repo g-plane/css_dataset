@@ -14,3 +14,23 @@ include = [
     "vendor/css-functions/index.json",
     "vendor/css-properties/data/all.json",
 ]
+
+[features]
+default = [
+    "css_functions",
+    "css_properties",
+    "css_at_rules",
+    "autoprefixable",
+    "media_features",
+    "pseudo_classes",
+    "pseudo_elements",
+    "tags",
+]
+css_functions = []
+css_properties = []
+css_at_rules = []
+autoprefixable = []
+media_features = []
+pseudo_classes = []
+pseudo_elements = []
+tags = []

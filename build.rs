@@ -1,8 +1,9 @@
 use std::{env, error::Error, fs};
 
 fn main() -> Result<(), Box<dyn Error>> {
-    generate_properties()?;
-
+    if env::var("CARGO_FEATURE_CSS_PROPERTIES").is_ok() {
+        generate_properties()?;
+    }
     Ok(())
 }
 

@@ -13,7 +13,6 @@ include = [
     "Cargo.toml",
     "vendor/css-functions/index.json",
     "vendor/css-properties/data/all.json",
-    "vendor/svg-tags/lib/svg-tags.json",
     "vendor/properties-shorthand.json",
 ]
 
